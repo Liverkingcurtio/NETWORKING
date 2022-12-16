@@ -1,0 +1,23 @@
+Active - network scan
+Passive - no scanning just vwatching traffic
+External - DNS Lookup,Whois
+Internal - Packet Sniffers
+
+PASSIVE - no direct interation, Lower Risk of Discovery
+-IP addresses and sub-domains
+-External and 3rd party sights
+-People and technologies
+-vulnerablilites
+~WHOIS
+~Job site listing
+~Phone numbers
+~Google Searching
+
+PASSIVE EXTERNAL - Allows for more efficient attack and plans
+-Resolves hostnames to IP addresses
+-RFC 3912
+-WHOIS
+-DIG
+-ZONE TRANSFERS
+-HOST HISTORY
+
