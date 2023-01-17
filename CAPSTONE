@@ -1,0 +1,23 @@
+for i in {1..254} ;do (ping -c 1 192.168.1.$i 2>/dev/null| grep "bytes from" &) ;done
+
+scan box
+( nmap -sT -Pn float_ip ) ---> look for open ports and validate with ( nc float_ip port)
+
+set a dynamic tunnel to float ip given to you
+( ssh net1_student1@float_ip - D 9050 -NT )
+
+ssh to box and run ip neigh ---> then run scan script on those boxes ---> validate those ports ---> (download those johns with ftp http )
+( proxychains ./scan.sh ) ---> ( proxychains nc ip port ) ---> ( proxychains wget -r ftp/http://ip )
+
+for remote tunell to box with telnet
+1.) forward traffic to telent port on target (forward from through the 6 to the seven)
+ssh net1_student1@10.50.23.177 -p 7777 -L 10100:10.2.2.7:23 -NT
+2.) telnet local host 10100
+3.) ON TARGET REMOTE TUNNEL ssh net1_student1@10.2.2.6 -p 7777 -R 10188:localhost:2222 -NT
+4.) connect tunnels ssh net1_student1@10.50.23.177 (if more than one hop away use local host with its relevent port for ssh) -p 7777 -L 10166:localhost:10188 -NT
+5.) dynamic tunnel ssh net1_student1@localhost -p 10166 -D 9050 -NT
+
+TO SCAN ON THE BOXES past the target
+ssh net1_student1@localhost -p 10166 -L 10112:10.10.10.140:301 -NT
+ssh net1_student1@localhost -p 10112 -D 9050 -NT
+
